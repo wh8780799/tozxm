@@ -112,7 +112,7 @@ data = {
     "brithday_nong":{"value":str(brith_nong)[0:10],
                      "color":"#173177"},
     "xingzuo":{"value":xingzuo["newslist"][8]["content"]},
-    "mingren":{"value":mingyan["newslist"][0]["content"]+"来自："+mingyan["newslist"][0]["mrname"]}
+    "mingren":{"value":mingyan["newslist"][0]["content"]+" 来自："+mingyan["newslist"][0]["mrname"]}
 }
 res = wm.send_template(user_id, template_id, data)
 print(res)
