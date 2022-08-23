@@ -16,7 +16,7 @@ birthday = os.environ['BIRTHDAY']
 TIANXING_APK=os.environ['TIANXING_APK']
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
-user_id = os.environ["USER_ID"]
+user_ids = os.environ["USER_ID"].split("\n")
 template_id = os.environ["TEMPLATE_ID"]
 
 
@@ -114,5 +114,9 @@ data = {
     "xingzuo":{"value":xingzuo["newslist"][8]["content"]},
     "mingren":{"value":mingyan["newslist"][0]["content"]+" 来自："+mingyan["newslist"][0]["mrname"]}
 }
-res = wm.send_template(user_id, template_id, data)
+
+count = 0
+for user_id in user_ids:
+  res = wm.send_template(user_id, template_id, data)
+  count+=1
 print(res)
