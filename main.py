@@ -18,7 +18,7 @@ data = f.read()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
-tianxing_apk=os.environ['Txapk']
+TIANXING_APK=os.environ['Txapk']
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
@@ -52,7 +52,7 @@ def get_words():
         return get_words()
 
     conn = http.client.HTTPSConnection('api.tianapi.com')  # 接口域名
-    params = urllib.parse.urlencode({'key': '40e5e00f02f89bafd3f96d84899c9275'})
+    params = urllib.parse.urlencode({'key': TIANXING_APK})
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/caihongpi/index', params, headers)
     res = conn.getresponse()
@@ -66,7 +66,7 @@ def get_random_color():
 
 def get_hot_serch():
     conn = http.client.HTTPSConnection('api.tianapi.com')  # 接口域名
-    params = urllib.parse.urlencode({'key': tianxing_apk})
+    params = urllib.parse.urlencode({'key': TIANXING_APK})
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/networkhot/index', params, headers)
     res = conn.getresponse()
@@ -78,7 +78,7 @@ def get_hot_serch():
     return hot_list
 def get_xingzuo():
     conn = http.client.HTTPSConnection('api.tianapi.com')  # 接口域名
-    params = urllib.parse.urlencode({'key': tianxing_apk, 'astro': '天蝎座'})
+    params = urllib.parse.urlencode({'key': TIANXING_APK, 'astro': '天蝎座'})
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/star/index', params, headers)
     res = conn.getresponse()
@@ -88,7 +88,7 @@ def get_xingzuo():
 def get_mingyan():
     import http.client, urllib
     conn = http.client.HTTPSConnection('api.tianapi.com')  # 接口域名
-    params = urllib.parse.urlencode({'key': tianxing_apk, 'num': '1'})
+    params = urllib.parse.urlencode({'key': TIANXING_APK, 'num': '1'})
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/dictum/index', params, headers)
     res = conn.getresponse()
