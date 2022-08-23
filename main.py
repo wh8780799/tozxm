@@ -11,10 +11,6 @@ import json
 from zhdate import ZhDate
 
 today = datetime.now()
-
-f = open('main.yml', encoding='utf-8')
-data = f.read()
-
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
