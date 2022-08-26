@@ -35,10 +35,11 @@ def get_count():
 def get_birthday():
     # 根据生日，首先来确定农历的生日的时候
     date1 = ZhDate(datetime.now().year, 9, 26).to_datetime() #转化为阳历的具体生日。
+    date2 = ZhDate(datetime.now().year+1, 9, 26).to_datetime() #转化为阳历的具体生日。
     if date1 < datetime.now():
-        date1 = date1.replace(year=next.year + 1)
-
-    return (date1 - today).days,date1
+        return (today-date1).days,date1
+    if date1 >datetime.now():
+        return (date2-today).days,date2
 
 
 def get_words():
