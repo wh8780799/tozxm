@@ -37,7 +37,7 @@ def get_birthday():
     date1 = ZhDate(datetime.now().year, 9, 26).to_datetime() #转化为阳历的具体生日。
     date2 = ZhDate(datetime.now().year+1, 9, 26).to_datetime() #转化为阳历的具体生日。
     if date1 > datetime.now():
-        return (today-date1).days,date1
+        return (date1-today).days,date1
     if date1 < datetime.now():
         return (date2-today).days,date2
 
