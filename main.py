@@ -33,7 +33,7 @@ def get_weather():
     if res.status_code != 200:
         return get_weather()
     weather = res.json()['result']['list'][0]
-    return weather['weather'], math.floor(weather['lowest']), math.floor(weather['highest'])
+    return weather['weather'], weather['lowest'], weather['highest']
 
 
 def get_count():
