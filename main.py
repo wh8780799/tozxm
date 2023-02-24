@@ -20,14 +20,20 @@ user_ids = os.environ["USER_ID"].split("\n")
 template_id = os.environ["TEMPLATE_ID"]
 
 
+# def get_weather():
+#     url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+#     res = requests.get(url).json()
+#     weather = res['data']['list'][0]
+#     return weather['weather'], math.floor(weather['temp'])
+#
 def get_weather():
-    url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+    url = "http://apis.tianapi.com/tianqi/index?key=40e5e00f02f89bafd3f96d84899c9275&tpye=1&city=" + city
+    headers = {'Content-type': 'application/x-www-form-urlencoded'}
     res = requests.get(url).json()
-    if res['code'][0} <>= 1020
-      weather = res['data']['list'][0]
-      return weather['weather'], math.floor(weather['temp'])
-      print ('接口失效')
-   
+    if res.status_code != 200:
+        return get_weather()
+    weather = res['result']['list'][0]
+    return weather['weather'], math.floor(weather['lowest']), math.floor(weather['highest'])
 
 
 def get_count():
@@ -97,7 +103,7 @@ def get_mingyan():
 
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
-wea, temperature = get_weather()
+wea, temp_low,temp_highest = get_weather()
 hot_list = get_hot_serch()
 brith_nong_day,brith_nong=get_birthday()
 xingzuo =get_xingzuo()
@@ -105,7 +111,7 @@ mingyan=get_mingyan()
 
 data = {
     "weather": {"value": wea},
-    "temperature": {"value": temperature},
+    "temperature": {"value": temp_low+'-'+temp_highest},
     "love_days": {"value": get_count()},
     "birthday_left": {"value": brith_nong_day},
     "words": {"value": get_words(),
