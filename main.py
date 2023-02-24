@@ -29,10 +29,10 @@ template_id = os.environ["TEMPLATE_ID"]
 def get_weather():
     url = "http://apis.tianapi.com/tianqi/index?key=40e5e00f02f89bafd3f96d84899c9275&tpye=1&city=" + city
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
-    res = requests.get(url).json()
+    res = requests.get(url)
     if res.status_code != 200:
         return get_weather()
-    weather = res['result']['list'][0]
+    weather = res.json()['result']['list'][0]
     return weather['weather'], math.floor(weather['lowest']), math.floor(weather['highest'])
 
 
