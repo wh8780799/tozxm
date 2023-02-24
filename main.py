@@ -111,7 +111,7 @@ mingyan=get_mingyan()
 
 data = {
     "weather": {"value": wea},
-    "temperature": {"value": temp_low+'-'+temp_highest},
+    "temperature": {"value": temp_low+'——'+temp_highest},
     "love_days": {"value": get_count()},
     "birthday_left": {"value": brith_nong_day},
     "words": {"value": get_words(),
